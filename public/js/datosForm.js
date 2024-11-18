@@ -11,7 +11,7 @@ document.getElementById('registerForm').addEventListener('submit', async (e) => 
     console.log('Datos enviados:', formData); // Verifica los valores en consola
 
     try {
-        const response = await fetch('http://localhost:3000/registro', {
+        const response = await fetch('http://54.152.95.254:3000/registro', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(formData),
