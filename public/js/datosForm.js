@@ -1,5 +1,5 @@
 document.getElementById('registerForm').addEventListener('submit', async (e) => {
-    e.preventDefault(); // Evita que la página se recargue
+    e.preventDefault();
 
     const formData = {
         nombres: document.getElementById('nombres').value.trim(),
@@ -8,7 +8,7 @@ document.getElementById('registerForm').addEventListener('submit', async (e) => 
         password: document.getElementById('password').value.trim(),
     };
 
-    console.log('Datos enviados:', formData); // Verifica los valores en consola
+    console.log('Datos enviados:', formData);
 
     try {
         const response = await fetch('http://54.152.95.254:3000/registro', {
@@ -18,7 +18,7 @@ document.getElementById('registerForm').addEventListener('submit', async (e) => 
         });
 
         const result = await response.json();
-        alert(result.message); // Muestra el mensaje del servidor
+        alert(result.message);
     } catch (error) {
         console.error('Error:', error);
         alert('Hubo un problema al enviar los datos.');

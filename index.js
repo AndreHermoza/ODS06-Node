@@ -22,10 +22,10 @@ let connection;
 async function initializeDatabase() {
     try {
         connection = await mysql2.createConnection({
-            host: 'andre-calendar.ct0ywq6ie37s.us-east-1.rds.amazonaws.com', // Mi Endpoint
-            user: 'admin', // Usuario de RDS
-            password: 'fantasmita312', // Contraseña de mi RDS
-            database: 'calendario_civico' // Nombre de la base de datos en RDS
+            host: 'andre-calendar.ct0ywq6ie37s.us-east-1.rds.amazonaws.com', 
+            user: 'admin', 
+            password: 'fantasmita312', 
+            database: 'calendario_civico'
         });
         console.log('Conectado a la base de datos de eventos.');
     } catch (error) {
@@ -33,9 +33,8 @@ async function initializeDatabase() {
     }
 }
 
-// Ruta para obtener el evento del día
 app.get('/evento', async (req, res) => {
-    const today = new Date().toISOString().split('T')[0]; // Formato YYYY-MM-DD
+    const today = new Date().toISOString().split('T')[0]; 
 
     try {
         const [results] = await connection.query('SELECT evento, ods FROM fechas_importantes WHERE fecha = ?', [simulateDate]);
@@ -52,9 +51,8 @@ app.get('/evento', async (req, res) => {
     }
 });
 
-// Iniciar el servidor después de inicializar la base de datos
 async function startServer() {
-    await initializeDatabase(); // Espera a que la base de datos se inicialice
+    await initializeDatabase(); 
 }
 
 startServer();
