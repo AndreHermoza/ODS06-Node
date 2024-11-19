@@ -1,3 +1,5 @@
+
+
 gsap.registerPlugin(ScrollTrigger)
 
 gsap.from('.logo div', {
@@ -92,7 +94,7 @@ gsap.fromTo('.hand', {
     scale: .2,
     opacity: 0,
     skewY: 30
-}, {
+        }, {
     scale: 1,
     opacity: 1,
     skewY: 0,
@@ -151,6 +153,15 @@ gsap.fromTo('.card', {
         amount: 1
     },
     scrollTrigger: '.card'
+})
+
+gsap.from('.txt-content h1', {
+    y: 400,
+    duration: 2,
+    opacity: 0,
+    delay: .5,
+    ScrollTrigger:  '.txt-content h1',
+    
 })
 
 const menu = document.querySelector('.menu')

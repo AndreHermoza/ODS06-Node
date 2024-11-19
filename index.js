@@ -1,7 +1,7 @@
 const express = require('express');
 const port = 3000;
 const mysql = require('mysql');
-const mysql2 = require ('mysql2/promise');
+const mysql2 = require('mysql2/promise');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
@@ -22,9 +22,9 @@ let connection;
 async function initializeDatabase() {
     try {
         connection = await mysql2.createConnection({
-            host: 'andre-calendar.ct0ywq6ie37s.us-east-1.rds.amazonaws.com', 
-            user: 'admin', 
-            password: 'fantasmita312', 
+            host: 'andre-calendar.ct0ywq6ie37s.us-east-1.rds.amazonaws.com',
+            user: 'admin',
+            password: 'fantasmita312',
             database: 'calendario_civico'
         });
         console.log('Conectado a la base de datos de eventos.');
@@ -34,7 +34,7 @@ async function initializeDatabase() {
 }
 
 app.get('/evento', async (req, res) => {
-    const today = new Date().toISOString().split('T')[0]; 
+    const today = new Date().toISOString().split('T')[0];
 
     try {
         const [results] = await connection.query('SELECT evento, ods FROM fechas_importantes WHERE fecha = ?', [simulateDate]);
@@ -52,7 +52,7 @@ app.get('/evento', async (req, res) => {
 });
 
 async function startServer() {
-    await initializeDatabase(); 
+    await initializeDatabase();
 }
 
 startServer();
